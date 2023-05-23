@@ -9,6 +9,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        xs: "10px",
+        xxs: "8px",
+      },
+      spacing: {
+        1024: "1024px",
+        508: "508px",
+      },
       colors: {
         // transparent: "transparent",
         // current: "currentColor",

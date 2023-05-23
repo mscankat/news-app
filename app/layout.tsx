@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-light dark:bg-dark`}>
         <Providers>
           <div className="flex">
-            <div className="w-60 h-screen bg-side-light dark:bg-side-dark flex flex-col items-center gap-10 transition-colors">
+            <div className=" fixed w-60 h-screen bg-side-light dark:bg-side-dark flex flex-col items-center gap-10 transition-colors">
               <Link href="/">
                 <Image
                   src="/../public/images/logo-white.png"
@@ -61,7 +61,7 @@ export default function RootLayout({
                 <ThemeSwitch />
               </div>
             </div>
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 ml-60">{children}</main>
           </div>
         </Providers>
       </body>
