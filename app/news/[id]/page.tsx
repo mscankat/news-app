@@ -1,3 +1,4 @@
+import BackButton from "@/components/backButton";
 import parse from "html-react-parser";
 export default async function Page({ params }: { params: { id: string } }) {
   interface dataType {
@@ -9,7 +10,9 @@ export default async function Page({ params }: { params: { id: string } }) {
   const data: dataType = await response.json();
   return (
     <>
-      <div className="flex flex-col w-800 m-auto py-10">
+      <div className="flex flex-col w-800 m-auto py-10 ">
+        <BackButton />
+
         {data.context.map((x, i) => {
           if (x.includes("ichef")) {
             return <img src={x} alt="image" className="py-10" />;
