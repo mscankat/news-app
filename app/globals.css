@@ -82,3 +82,13 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+b {
+  display: inline;
+  width: auto;
+}
+
+.keen-slider__slide div:hover {
+  box-shadow: none;
+  text-shadow: none;
+}

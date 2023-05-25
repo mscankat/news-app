@@ -16,6 +16,7 @@ module.exports = {
       spacing: {
         1024: "1024px",
         508: "508px",
+        800: "800px",
       },
       colors: {
         // transparent: "transparent",
