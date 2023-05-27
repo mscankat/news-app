@@ -2,8 +2,20 @@
 import Card from "./card";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
+interface datatype {
+  _id: string;
+  date: number;
+  link: string;
+  title: string;
+  description?: string;
+  context: string[];
+  image: string;
+}
+interface Props {
+  data: datatype[];
+}
 
-export default function Slider({ data }: any) {
+export default function Slider({ data }: Props) {
   const [sliderRef, instanceRef] = useKeenSlider(
     {
       slideChanged() {

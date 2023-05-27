@@ -11,14 +11,7 @@
 
 body {
   height: 100%;
-  /* background-color: #eeeff0; */
 }
-
-/* @layer base {
-  body {
-    @apply dark:bg-gray-100 bg-white;
-  }
-} */
 
 /* The switch - the box around the slider */
 .switch {

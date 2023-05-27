@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { intervalToDuration, formatDuration } from "date-fns";
 import Card from "./card";
 import Slider from "./slider";
 
