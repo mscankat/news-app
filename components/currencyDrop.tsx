@@ -1,26 +1,48 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import triGreen from "public/images/tri_green.png";
 import triRed from "public/images/tri_red.png";
 import triBlack from "public/images/tri_black.png";
+import axios from "axios";
 interface dataType {
   priceChange: string;
   lastPrice: string;
   symbol: string;
 }
-interface Props {
-  data: dataType[];
+async function getData(url: string) {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch");
+  }
+  return await response.json();
 }
 
-export default function Currency({ data }: Props) {
-  const [drop, setDrop] = useState(false);
-  const [selected, setSelected] = useState(data[0]);
+export default function Currency() {
+  // let data: dataType[] = [{ priceChange: "", lastPrice: "", symbol: "" }];
 
-  const [mount, setMount] = useState(false);
+  const [drop, setDrop] = useState(false);
+  const [data, setData] = useState<dataType[]>([
+    { priceChange: "", lastPrice: "", symbol: "" },
+  ]);
+  const [selected, setSelected] = useState<dataType>(data[0]);
+
   useEffect(() => {
-    setMount(true);
+    axios
+      .get(
+        "https://api.binance.com/api/v3/ticker/24hr?symbols=[%22ETHUSDT%22,%22BTCUSDT%22,%22BNBUSDT%22]"
+      )
+      .then((response) => {
+        setData(response.data);
+        setSelected(response.data[0]);
+        console.log(response.data);
+      });
   }, []);
+  // const [mount, setMount] = useState(false);
+  // useEffect(() => {
+  //   setMount(true);
+  // }, []);
   function handleClick(event: React.MouseEvent) {
     const symbol = event.currentTarget.firstElementChild?.innerHTML;
     for (const sym of data) {
@@ -31,9 +53,9 @@ export default function Currency({ data }: Props) {
       }
     }
   }
-  if (!mount) {
-    return <></>;
-  }
+  // if (!mount) {
+  //   return <></>;
+  // }
 
   return (
     <>
@@ -58,12 +80,14 @@ export default function Currency({ data }: Props) {
               />
             )}
           </div>
-          <div className="text-sm pr-2">{parseInt(selected.lastPrice)} </div>
+          <div className="text-sm pr-2">
+            {parseInt(selected.lastPrice) || " "}
+          </div>
           <Image
             src={triBlack}
             alt="triangle"
-            width={11}
-            height={11}
+            width={8}
+            height={8}
             className="rotate-180"
           />
         </div>

@@ -1,6 +1,8 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import triBlack from "public/images/tri_black.png";
 
 export default function LanguageSelector() {
   const router = useRouter();
@@ -37,6 +39,13 @@ export default function LanguageSelector() {
           onClick={() => setDrop(!drop)}
         >
           <div className="text-sm pr-2 font-bold">{language}</div>
+          <Image
+            src={triBlack}
+            width="8"
+            height="8"
+            alt="black triangle"
+            className="rotate-180"
+          ></Image>
         </div>
         <div
           className={` ${

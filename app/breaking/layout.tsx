@@ -55,7 +55,6 @@ export default function RootLayout({
         </div>
         <div className="ml-60 w-full ">
           <div className="m-auto w-1024 ">
-            {/* @ts-expect-error Async Server Component */}
             <TopPanel />
             <main className=" ">{children}</main>
           </div>
