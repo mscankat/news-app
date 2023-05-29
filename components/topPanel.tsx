@@ -3,23 +3,50 @@ import LanguageSelector from "./languageSelector";
 import Search from "./search";
 import Weather from "./weather";
 
-interface currencyDataType {
+interface dataType {
   priceChange: string;
   lastPrice: string;
   symbol: string;
 }
+interface weatherDataType {
+  location: {
+    name: string;
+  };
+  current: {
+    temp_c: number;
+    temp_f: number;
+    is_day: number;
+    condition: {
+      code: number;
+    };
+  };
+}
+async function getData(url: string) {
+  const response = await fetch(url);
 
-export default function TopPanel() {
+  if (!response.ok) {
+    throw new Error("Failed to fetch");
+  }
+  return await response.json();
+}
+
+export default async function TopPanel() {
+  const weatherData: weatherDataType = await getData(
+    "http://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=istanbul&aqi=yes"
+  );
+
   return (
     <>
       <div className="flex justify-between w-1024 items-center pt-11 pb-9">
-        <Search />
+        <div>
+          <Search />
+        </div>
 
         <div className="">
           <Currency />
         </div>
         <div>
-          <Weather />
+          <Weather data={weatherData} />
         </div>
         <div className="">
           <LanguageSelector />

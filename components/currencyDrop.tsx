@@ -10,8 +10,11 @@ interface dataType {
   lastPrice: string;
   symbol: string;
 }
+interface Props {
+  data: dataType[];
+}
 async function getData(url: string) {
-  const response = await fetch(url);
+  const response = await fetch(url, { cache: "no-store" });
 
   if (!response.ok) {
     throw new Error("Failed to fetch");
@@ -20,8 +23,6 @@ async function getData(url: string) {
 }
 
 export default function Currency() {
-  // let data: dataType[] = [{ priceChange: "", lastPrice: "", symbol: "" }];
-
   const [drop, setDrop] = useState(false);
   const [data, setData] = useState<dataType[]>([
     { priceChange: "", lastPrice: "", symbol: "" },
@@ -37,12 +38,10 @@ export default function Currency() {
         setData(response.data);
         setSelected(response.data[0]);
         console.log(response.data);
-      });
+      })
+      .finally(() => setMounted(true));
   }, []);
-  // const [mount, setMount] = useState(false);
-  // useEffect(() => {
-  //   setMount(true);
-  // }, []);
+
   function handleClick(event: React.MouseEvent) {
     const symbol = event.currentTarget.firstElementChild?.innerHTML;
     for (const sym of data) {
@@ -53,10 +52,11 @@ export default function Currency() {
       }
     }
   }
-  // if (!mount) {
-  //   return <></>;
-  // }
+  const [mounted, setMounted] = useState(false);
 
+  if (!mounted) {
+    return null;
+  }
   return (
     <>
       <div className="">
@@ -81,7 +81,7 @@ export default function Currency() {
             )}
           </div>
           <div className="text-sm pr-2">
-            {parseInt(selected.lastPrice) || " "}
+            {parseInt(selected.lastPrice) || " "}{" "}
           </div>
           <Image
             src={triBlack}
@@ -104,10 +104,10 @@ export default function Currency() {
                 className="flex items-center mb-3 cursor-pointer"
               >
                 <div className="text-sm pr-2 font-bold ">
-                  {current.symbol.split("USDT")[0]}
+                  {current.symbol.split("USDT")[0]}{" "}
                 </div>
                 <div className="pr-2">
-                  {parseInt(current.priceChange) > 0 ? (
+                  {parseInt(current.priceChange) || 0 > 0 ? (
                     <Image src={triGreen} alt="increase" width={8} height={8} />
                   ) : (
                     <Image
@@ -117,10 +117,12 @@ export default function Currency() {
                       height={8}
                       className="rotate-180"
                     />
-                  )}
+                  )}{" "}
                 </div>
 
-                <div className="text-sm">{parseInt(current.lastPrice)} </div>
+                <div className="text-sm">
+                  {parseInt(current.lastPrice) || ""}{" "}
+                </div>
               </div>
             );
           })}

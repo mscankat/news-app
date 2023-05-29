@@ -18,6 +18,9 @@ interface dataType {
     };
   };
 }
+interface Props {
+  data: dataType;
+}
 async function getData(url: string) {
   const response = await fetch(url);
 
@@ -26,22 +29,18 @@ async function getData(url: string) {
   }
   return await response.json();
 }
-export default function Weather() {
+export default function Weather({ data }: Props) {
   const [drop, setDrop] = useState(false);
   const [selected, setSelected] = useState();
-  const [data, setData] = useState<dataType>({
-    current: { temp_c: 0, temp_f: 0, is_day: 0, condition: { code: 0 } },
-    location: { name: "" },
-  });
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    axios
-      .get(
-        "http://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=istanbul&aqi=yes"
-      )
-      .then((response) => {
-        setData(response.data);
-      });
+    setMounted(true);
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>
@@ -53,9 +52,11 @@ export default function Weather() {
           <img
             src={setIconPath(data.current.condition.code, data.current.is_day)}
             alt=""
+            width={25}
+            height={25}
           />
           <div className="text-sm pr-2 font-bold">{data.location.name}</div>
-          <div>{data.current.temp_c}</div>
+          <div>{data.current.temp_c} </div>
           <Image
             src={triBlack}
             width="8"
@@ -64,22 +65,17 @@ export default function Weather() {
             className="rotate-180"
           ></Image>
         </div>
-        {/* <div
+        <div
           className={` ${
             !drop && "hidden"
           } absolute bg-slate-50 p-5 text-sm rounded-sm`}
         >
-          <div className="flex items-center mb-3 cursor-pointer">
+          {/* <div className="flex items-center mb-3 cursor-pointer">
             <div className="text-sm pr-2 font-bold " onClick={handleClick}>
               EN
             </div>
-          </div>
-          <div className="flex items-center mb-3 cursor-pointer">
-            <div className="text-sm pr-2 font-bold " onClick={handleClick}>
-              TR
-            </div>
-          </div>
-        </div> */}
+          </div> */}
+        </div>
       </div>
     </>
   );
