@@ -18,24 +18,36 @@ interface dataType {
     };
   };
 }
-interface Props {
-  data: dataType;
-}
-async function getData(url: string) {
-  const response = await fetch(url);
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch");
-  }
-  return await response.json();
-}
-export default function Weather({ data }: Props) {
+export default function Weather() {
   const [drop, setDrop] = useState(false);
   const [selected, setSelected] = useState();
   const [mounted, setMounted] = useState(false);
+  const [data, setData] = useState<dataType>({
+    location: {
+      name: "",
+    },
+    current: {
+      temp_c: 0,
+      temp_f: 0,
+      is_day: 0,
+      condition: {
+        code: 0,
+      },
+    },
+  });
 
   useEffect(() => {
-    setMounted(true);
+    axios
+      .get(
+        "http://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=istanbul&aqi=yes"
+      )
+      .then((response) => {
+        setData(response.data);
+        setSelected(response.data[0]);
+        console.log(response.data);
+      })
+      .finally(() => setMounted(true));
   }, []);
 
   if (!mounted) {

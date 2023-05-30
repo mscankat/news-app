@@ -5,21 +5,11 @@ import triGreen from "public/images/tri_green.png";
 import triRed from "public/images/tri_red.png";
 import triBlack from "public/images/tri_black.png";
 import axios from "axios";
+import { config } from "process";
 interface dataType {
   priceChange: string;
   lastPrice: string;
   symbol: string;
-}
-interface Props {
-  data: dataType[];
-}
-async function getData(url: string) {
-  const response = await fetch(url, { cache: "no-store" });
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch");
-  }
-  return await response.json();
 }
 
 export default function Currency() {

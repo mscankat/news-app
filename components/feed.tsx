@@ -1,14 +1,5 @@
 import Card from "./card";
-import Slider from "./slider";
 
-async function getData(url: string) {
-  const response = await fetch(url);
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch");
-  }
-  return await response.json();
-}
 interface datatype {
   _id: string;
   date: number;
@@ -18,9 +9,10 @@ interface datatype {
   context: string[];
   image: string;
 }
-
-export default async function Feed() {
-  const data: datatype[] = await getData("http://3.73.132.230:3001/api/getAll");
+interface Props {
+  data: datatype[];
+}
+export default async function Feed({ data }: Props) {
   let left = [];
   let middle = [];
   let right = [];
@@ -41,22 +33,24 @@ export default async function Feed() {
 
   return (
     <>
-      <Slider data={data} />
       <div className="flex gap-8">
         <div className="mt-7 cursor-pointer flex flex-col gap-3 flex-wrap w-80">
-          {left.map((x: datatype) => {
-            return <Card newsData={x} />;
-          })}
+          {left.length > 0 &&
+            left.map((x: datatype) => {
+              return <Card newsData={x} />;
+            })}
         </div>
         <div className="mt-7 cursor-pointer  flex gap-3 flex-wrap w-80 flex-col">
-          {middle.map((x: datatype) => {
-            return <Card newsData={x} />;
-          })}
+          {middle.length > 0 &&
+            middle.map((x: datatype) => {
+              return <Card newsData={x} />;
+            })}
         </div>
         <div className="mt-7 cursor-pointer  flex gap-3 flex-wrap w-80 flex-col">
-          {right.map((x: datatype) => {
-            return <Card newsData={x} />;
-          })}
+          {right.length > 0 &&
+            right.map((x: datatype) => {
+              return <Card newsData={x} />;
+            })}
         </div>
       </div>
     </>

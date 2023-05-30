@@ -30,11 +30,7 @@ async function getData(url: string) {
   return await response.json();
 }
 
-export default async function TopPanel() {
-  const weatherData: weatherDataType = await getData(
-    "http://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=istanbul&aqi=yes"
-  );
-
+export default function TopPanel() {
   return (
     <>
       <div className="flex justify-between w-1024 items-center pt-11 pb-9">
@@ -46,7 +42,7 @@ export default async function TopPanel() {
           <Currency />
         </div>
         <div>
-          <Weather data={weatherData} />
+          <Weather />
         </div>
         <div className="">
           <LanguageSelector />
