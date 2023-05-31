@@ -1,14 +1,10 @@
-"use client";
-// import "./globals.css";
-import { Inter } from "next/font/google";
+// "use client";
 import Image from "next/image";
 import { Providers } from "../providers";
 import ThemeSwitch from "@/components/themeSwitch";
 import Link from "next/link";
 import logoWhite from "/public/images/logo-white.png";
 import TopPanel from "@/components/topPanel";
-import dynamic from "next/dynamic";
-const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -23,27 +19,27 @@ export default function RootLayout({
             <Image src={logoWhite} alt="logo" width={128} height={128} />
           </Link>
           <ul className="flex w-full  flex-col text-xs font-bold text-side-text-color ">
-            <Link href="/breaking">
+            <Link href="/tr/breaking">
               <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
                 <div className="w-44 block ml-auto">BREAKING NEWS </div>
               </li>
             </Link>
-            <Link href="/technology">
+            <Link href="/tr/technology">
               <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
                 <div className="w-44 block ml-auto"> SCIENCE & TECH</div>
               </li>
             </Link>
-            <Link href="/finance">
+            <Link href="/tr/finance">
               <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
                 <div className="w-44 block ml-auto"> FINANCE</div>
               </li>
             </Link>
-            <Link href="/en">
+            <Link href="/tr/lifestyle">
               <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
                 <div className="w-44 block ml-auto"> LIFESTYLE</div>
               </li>
             </Link>
-            <Link href="/sport">
+            <Link href="/tr/sport">
               <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
                 <div className="w-44 block ml-auto"> SPORT</div>
               </li>

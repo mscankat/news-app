@@ -1,13 +1,5 @@
-"use client";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Image from "next/image";
-import { Providers } from "./providers";
-import ThemeSwitch from "@/components/themeSwitch";
-import Link from "next/link";
-import { createContext, useState } from "react";
-import { useRouter } from "next/navigation";
-import { languageContext } from "./contexts";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({

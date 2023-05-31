@@ -8,6 +8,10 @@ async function getData(url: string) {
   }
   return await response.json();
 }
+export const metadata = {
+  title: "News",
+  description: "Breaking News",
+};
 interface datatype {
   _id: string;
   date: number;

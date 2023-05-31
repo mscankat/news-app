@@ -1,8 +1,10 @@
-import Image from "next/image";
-export const metadata = {
-  title: "News",
-  description: "Breaking News",
-};
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 export default function Home() {
-  return <div className="w-full">lkahsjdk</div>;
+  const router = useRouter();
+  useEffect(() => {
+    router.replace("/tr/breaking");
+  }, []);
+  return null;
 }
