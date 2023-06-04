@@ -29,8 +29,7 @@ export default async function Page({
   const data: datatype[] = await getData(apiURL.href);
   return (
     <>
-      {/* @ts-expect-error Async Server Component */}
-      <Feed data={data} />
+      <Feed data={data} toShow={21} />
     </>
   );
 }

@@ -85,3 +85,8 @@ b {
   box-shadow: none;
   text-shadow: none;
 }
+
+iframe {
+  height: 430px;
+  width: 100%;
+}

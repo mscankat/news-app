@@ -1,4 +1,3 @@
-// "use client";
 import Image from "next/image";
 import { Providers } from "../providers";
 import ThemeSwitch from "@/components/themeSwitch";
@@ -32,16 +31,6 @@ export default function RootLayout({
             <Link href="/tr/finance">
               <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
                 <div className="w-44 block ml-auto"> FINANCE</div>
-              </li>
-            </Link>
-            <Link href="/tr/lifestyle">
-              <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
-                <div className="w-44 block ml-auto"> LIFESTYLE</div>
-              </li>
-            </Link>
-            <Link href="/tr/sport">
-              <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
-                <div className="w-44 block ml-auto"> SPORT</div>
               </li>
             </Link>
           </ul>

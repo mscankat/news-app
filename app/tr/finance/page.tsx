@@ -20,10 +20,11 @@ interface datatype {
   description?: string;
   context: string[];
   image: string;
+  category: string;
 }
-export default async function Breaking() {
+export default async function Finance() {
   const data: datatype[] = await getData(
-    "http://3.73.132.230:3001/api/category/breaking"
+    "http://3.73.132.230:3001/api/category/finance"
   );
   return (
     <>

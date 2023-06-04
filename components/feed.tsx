@@ -11,8 +11,11 @@ interface datatype {
 }
 interface Props {
   data: datatype[];
+  toShow: number;
 }
-export default async function Feed({ data }: Props) {
+
+export default function Feed({ data, toShow }: Props) {
+  data = data.slice(0, toShow);
   let left = [];
   let middle = [];
   let right = [];
@@ -30,27 +33,39 @@ export default async function Feed({ data }: Props) {
       right.push(item);
     }
   }
+  function after(count: number, f: VoidFunction) {
+    let noOfCalls = 0;
+    return function () {
+      console.log(noOfCalls);
+      noOfCalls = noOfCalls + 1;
+      if (count === noOfCalls) {
+        f();
+      }
+    };
+  }
 
   return (
     <>
-      <div className="flex gap-8">
-        <div className="mt-7 cursor-pointer flex flex-col gap-3 flex-wrap w-80">
-          {left.length > 0 &&
-            left.map((x: datatype) => {
-              return <Card newsData={x} />;
-            })}
-        </div>
-        <div className="mt-7 cursor-pointer  flex gap-3 flex-wrap w-80 flex-col">
-          {middle.length > 0 &&
-            middle.map((x: datatype) => {
-              return <Card newsData={x} />;
-            })}
-        </div>
-        <div className="mt-7 cursor-pointer  flex gap-3 flex-wrap w-80 flex-col">
-          {right.length > 0 &&
-            right.map((x: datatype) => {
-              return <Card newsData={x} />;
-            })}
+      <div>
+        <div className="flex gap-8">
+          <div className="mt-7 cursor-pointer flex flex-col gap-3 flex-wrap w-80">
+            {left.length > 0 &&
+              left.map((x: datatype) => {
+                return <Card newsData={x} key={x._id} />;
+              })}
+          </div>
+          <div className="mt-7 cursor-pointer  flex gap-3 flex-wrap w-80 flex-col">
+            {middle.length > 0 &&
+              middle.map((x: datatype) => {
+                return <Card newsData={x} key={x._id} />;
+              })}
+          </div>
+          <div className="mt-7 cursor-pointer  flex gap-3 flex-wrap w-80 flex-col">
+            {right.length > 0 &&
+              right.map((x: datatype) => {
+                return <Card newsData={x} key={x._id} />;
+              })}
+          </div>
         </div>
       </div>
     </>

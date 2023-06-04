@@ -1,5 +1,3 @@
-"use client";
-// import "./globals.css";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import { Providers } from "../providers";
@@ -37,16 +35,6 @@ export default function RootLayout({
                 <div className="w-44 block ml-auto"> FINANCE</div>
               </li>
             </Link>
-            <Link href="/lifestyle">
-              <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
-                <div className="w-44 block ml-auto"> LIFESTYLE</div>
-              </li>
-            </Link>
-            <Link href="/sport">
-              <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
-                <div className="w-44 block ml-auto"> SPORT</div>
-              </li>
-            </Link>
           </ul>
           <div>
             <ThemeSwitch />
@@ -54,7 +42,6 @@ export default function RootLayout({
         </div>
         <div className="ml-60 w-full ">
           <div className="m-auto w-1024 ">
-            {/* @ts-expect-error Async Server Component */}
             <TopPanel />
             <main className=" ">{children}</main>
           </div>
