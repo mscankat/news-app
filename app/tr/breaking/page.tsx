@@ -23,12 +23,14 @@ interface datatype {
 }
 export default async function Breaking() {
   const data: datatype[] = await getData(
-    "http://3.73.132.230:3001/api/getMany/breaking/21"
+    "http://3.73.132.230:3001/api/getMany/breaking/30"
   );
+  const sliderData = data.slice(0, 9);
+  const feedData = data.slice(9, 30);
   return (
     <>
-      <Slider data={data} />
-      <Feed data={data} />
+      <Slider data={sliderData} />
+      <Feed data={feedData} />
     </>
   );
 }

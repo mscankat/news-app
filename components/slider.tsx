@@ -46,13 +46,17 @@ export default function Slider({ data }: Props) {
         </div>
         <div ref={sliderRef} className="keen-slider relative">
           <div
-            className="absolute left-0 top-3 z-10 bg-neutral-400 opacity-70 w-8 h-72 rounded-r"
+            className="absolute left-0 top-3 z-10 bg-neutral-400 opacity-70 w-8 h-72 rounded-r flex"
             onClick={handleClick}
-          ></div>
+          >
+            <div className=" w-0 h-0 border-r-8 border-r-side-dark border-t-8 border-b-8 border-b-transparent border-t-transparent m-auto items-center "></div>
+          </div>
           <div
-            className="absolute right-0 top-3 z-10 bg-neutral-400 opacity-70 w-8 h-72 rounded-l"
+            className="absolute right-0 top-3 z-10 bg-neutral-400 opacity-70 w-8 h-72 rounded-l flex"
             onClick={handleClick2}
-          ></div>
+          >
+            <div className=" w-0 h-0 border-l-8 border-l-side-light border-t-8 border-b-8 border-b-transparent border-t-transparent m-auto items-center "></div>
+          </div>
           <div className="keen-slider__slide flex justify-center ">
             <Card newsData={data[0]} />
             <Card newsData={data[1]} />
