@@ -11,11 +11,10 @@ interface datatype {
 }
 interface Props {
   data: datatype[];
-  toShow: number;
 }
 
-export default function Feed({ data, toShow }: Props) {
-  data = data.slice(0, toShow);
+export default function Feed({ data }: Props) {
+  data;
   let left = [];
   let middle = [];
   let right = [];

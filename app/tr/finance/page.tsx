@@ -24,12 +24,12 @@ interface datatype {
 }
 export default async function Finance() {
   const data: datatype[] = await getData(
-    "http://3.73.132.230:3001/api/category/finance"
+    "http://3.73.132.230:3001/api/getMany/finance/21"
   );
   return (
     <>
       <Slider data={data} />
-      <Feed data={data} toShow={21} />
+      <Feed data={data} />
     </>
   );
 }
