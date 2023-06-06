@@ -6,14 +6,13 @@ export default async function Page({ params }: { params: { id: string } }) {
     title: string;
     description: string;
   }
-  const response = await fetch(
-    `http://3.73.132.230:3001/api/getOne/${params.id}`
-  );
+  const response = await fetch(`http://localhost:3001/api/getOne/${params.id}`);
   const data: dataType = await response.json();
   return (
     <>
+      <BackButton />
+
       <div className="flex flex-col w-800 m-auto py-10 ">
-        <BackButton />
         <div className="font-bold text-5xl">{data.title}</div>
         {data.context.map((x, i) => {
           if (
@@ -25,9 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           ) {
             return <img src={x} alt="image" className="py-10" />;
           }
-          // if (x.includes("content-iframe")) {
-          //   return <div className="h-508 w-full">{parse(x)}</div>;
-          // }
+
           return <div className="py-3">{parse(x)}</div>;
         })}
       </div>

@@ -1,8 +1,16 @@
 "use client";
 import Link from "next/link";
 import intervalToDuration from "date-fns/intervalToDuration";
-import { useState } from "react";
-function getDuration(date: number) {
+import { useContext } from "react";
+import LanguageData from "@/public/local/language.json";
+import { LanguageContext } from "@/context/context";
+function getDuration(date: number, ln: string) {
+  let language;
+  if (ln === "TR") {
+    language = LanguageData.tr;
+  } else {
+    language = LanguageData.en;
+  }
   const interval = intervalToDuration({
     start: new Date(date),
     end: new Date(),
@@ -10,38 +18,48 @@ function getDuration(date: number) {
   let duration = "";
   if (interval.years || 0 > 0) {
     interval.months || 0 > 5
-      ? (duration = (interval.years || 0 + 1).toString() + " YEARS")
-      : (duration = interval.years + " YEARS");
+      ? (duration =
+          (interval.years || 0 + 1).toString() + " " + language.card.time.year)
+      : (duration = interval.years + language.card.time.year);
     return duration;
   }
   if (interval.months || 0 > 0) {
     interval.weeks || 0 > 1
-      ? (duration = (interval.months || 0 + 1).toString() + " MONTHS")
-      : (duration = interval.months + " MONTHS");
+      ? (duration =
+          (interval.months || 0 + 1).toString() +
+          " " +
+          language.card.time.month)
+      : (duration = interval.months + language.card.time.month);
     return duration;
   }
   if (interval.weeks || 0 > 0) {
     interval.days || 0 > 3
-      ? (duration = (interval.weeks || 0 + 1).toString() + " WEEKS")
-      : (duration = interval.weeks + " WEEKS");
+      ? (duration =
+          (interval.weeks || 0 + 1).toString() + " " + language.card.time.week)
+      : (duration = interval.weeks + language.card.time.week);
     return duration;
   }
   if (interval.days || 0 > 0) {
     interval.hours || 0 > 11
-      ? (duration = (interval.days || 0 + 1).toString() + " DAYS")
-      : (duration = interval.days + " DAYS");
+      ? (duration =
+          (interval.days || 0 + 1).toString() + " " + language.card.time.day)
+      : (duration = interval.days + language.card.time.day);
     return duration;
   }
   if (interval.hours || 0 > 0) {
     interval.minutes || 0 > 29
-      ? (duration = (interval.hours || 0 + 1).toString() + " HOURS")
-      : (duration = interval.hours + " HOURS");
+      ? (duration =
+          (interval.hours || 0 + 1).toString() + " " + language.card.time.hour)
+      : (duration = interval.hours + language.card.time.hour);
     return duration;
   }
   if (interval.minutes || 0 > 0) {
     interval.seconds || 0 > 29
-      ? (duration = (interval.minutes || 0 + 1).toString() + " MINUTES")
-      : (duration = interval.minutes + " MINUTES");
+      ? (duration =
+          (interval.minutes || 0 + 1).toString() +
+          " " +
+          language.card.time.minute)
+      : (duration = interval.minutes + language.card.time.minute);
     return duration;
   }
   return duration;
@@ -61,7 +79,7 @@ interface Props {
 
 export default function Card({ newsData }: Props) {
   //   console.log(newsData);
-
+  const { language } = useContext(LanguageContext);
   return (
     <>
       <Link href={"/news/" + newsData._id}>
@@ -76,7 +94,9 @@ export default function Card({ newsData }: Props) {
               <div className="text-xs font-semibold uppercase">
                 {new URL(newsData.link).hostname.split(".")[1]}
               </div>
-              <div className="text-xxs ">{getDuration(newsData.date)}</div>
+              <div className="text-xxs ">
+                {getDuration(newsData.date, language)}
+              </div>
             </div>
             <div className="text-lg font-bold pb-3">{newsData.title}</div>
           </div>

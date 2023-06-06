@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export default function Home() {
   const router = useRouter();
   useEffect(() => {
-    router.replace("/tr/breaking");
+    router.replace("/breaking");
   }, []);
   return null;
 }
