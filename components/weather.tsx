@@ -4,6 +4,7 @@ import Image from "next/image";
 import triBlack from "public/images/tri_black.png";
 import { setIconPath } from "@/utils/setIconPath";
 import axios from "axios";
+import DropTriangle from "./dropTriangle";
 
 interface dataType {
   location: {
@@ -67,20 +68,14 @@ export default function Weather() {
             width={25}
             height={25}
           />
-          <div className="text-sm pr-2 font-bold">{data.location.name}</div>
-          <div>{data.current.temp_c} </div>
-          <Image
-            src={triBlack}
-            width="8"
-            height="8"
-            alt="black triangle"
-            className="rotate-180"
-          ></Image>
+          <div className="text-sm pr-1 font-bold">{data.location.name}</div>
+          <div className="text-sm pr-1">{data.current.temp_c} </div>
+          <DropTriangle />
         </div>
         <div
           className={` ${
             !drop && "hidden"
-          } absolute bg-slate-50 p-5 text-sm rounded-sm`}
+          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-dark`}
         >
           {/* <div className="flex items-center mb-3 cursor-pointer">
             <div className="text-sm pr-2 font-bold " onClick={handleClick}>

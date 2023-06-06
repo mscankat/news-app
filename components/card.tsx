@@ -83,7 +83,7 @@ export default function Card({ newsData }: Props) {
   return (
     <>
       <Link href={"/news/" + newsData._id}>
-        <div className="rounded-md bg-white w-80 hover:shadow-lg transition-shadow">
+        <div className="rounded-md bg-white w-80 hover:shadow-lg transition-shadow dark:bg-card-dark dark:hover:shadow-card-dark ">
           <div className="p-3">
             <img
               src={newsData.image}

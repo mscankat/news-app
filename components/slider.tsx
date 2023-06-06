@@ -47,7 +47,7 @@ export default function Slider({ data }: Props) {
 
   return (
     <>
-      <div className="w-1024 h-508 bg-white rounded-md ">
+      <div className="w-1024 h-508 bg-white rounded-md dark:bg-card-dark">
         <div className="flex justify-between pt-10 px-14 items-baseline">
           <div className="font-extrabold text-3xl">{ln.slider.title}</div>
           <div className="text-xs tracking-wider font-semibold">
@@ -56,16 +56,16 @@ export default function Slider({ data }: Props) {
         </div>
         <div ref={sliderRef} className="keen-slider relative">
           <div
-            className="absolute left-0 top-3 z-10 bg-neutral-400 opacity-70 w-8 h-72 rounded-r flex"
+            className="absolute left-0 top-3 z-10 bg-side-text-color opacity-70 w-8 h-72 rounded-r flex cursor-pointer hover:w-9 transition-all"
             onClick={handleClick}
           >
             <div className=" w-0 h-0 border-r-8 border-r-side-dark border-t-8 border-b-8 border-b-transparent border-t-transparent m-auto items-center "></div>
           </div>
           <div
-            className="absolute right-0 top-3 z-10 bg-neutral-400 opacity-70 w-8 h-72 rounded-l flex"
+            className="absolute right-0 top-3 z-10 bg-side-text-color opacity-70 w-8 h-72 rounded-l flex cursor-pointer hover:w-9 transition-all"
             onClick={handleClick2}
           >
-            <div className=" w-0 h-0 border-l-8 border-l-side-light border-t-8 border-b-8 border-b-transparent border-t-transparent m-auto items-center "></div>
+            <div className=" w-0 h-0 border-l-8 border-l-black border-t-8 border-b-8 border-b-transparent border-t-transparent m-auto items-center "></div>
           </div>
           <div className="keen-slider__slide flex justify-center ">
             <Card newsData={data[0]} />

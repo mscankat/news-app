@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import triBlack from "public/images/tri_black.png";
+import DropTriangle from "./dropTriangle";
 
 export default function LanguageSelector() {
   const { language, setLanguage } = useContext(LanguageContext);
@@ -50,26 +51,20 @@ export default function LanguageSelector() {
           className="flex items-center cursor-pointer"
           onClick={() => setDrop(!drop)}
         >
-          <div className="text-sm pr-2 font-bold">{language}</div>
-          <Image
-            src={triBlack}
-            width="8"
-            height="8"
-            alt="black triangle"
-            className="rotate-180"
-          ></Image>
+          <div className="text-sm pr-1 font-bold">{language}</div>
+          <DropTriangle />
         </div>
         <div
           className={` ${
             !drop && "hidden"
-          } absolute bg-slate-50 p-5 text-sm rounded-sm`}
+          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-dark`}
         >
           <div className="flex items-center mb-3 cursor-pointer">
             <div className="text-sm pr-2 font-bold " onClick={handleClick}>
               EN
             </div>
           </div>
-          <div className="flex items-center mb-3 cursor-pointer">
+          <div className="flex items-center  cursor-pointer">
             <div className="text-sm pr-2 font-bold " onClick={handleClick}>
               TR
             </div>

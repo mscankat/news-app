@@ -27,6 +27,7 @@ module.exports = {
         "side-text-color": "#505256",
         "side-dark": "#0c0f12",
         "side-hover-text": "#989898",
+        "card-dark": "#0a0a0a",
         light: "#eeeff0",
         dark: "#12161b",
       },

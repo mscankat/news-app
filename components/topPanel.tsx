@@ -37,7 +37,6 @@ export default function TopPanel() {
         <div>
           <Search />
         </div>
-
         <div className="">
           <Currency />
         </div>

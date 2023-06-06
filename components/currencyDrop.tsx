@@ -4,8 +4,10 @@ import { useState, useEffect, use } from "react";
 import triGreen from "public/images/tri_green.png";
 import triRed from "public/images/tri_red.png";
 import triBlack from "public/images/tri_black.png";
+import triWhite from "public/images/tri_white.png";
 import axios from "axios";
-import { config } from "process";
+import { useTheme } from "next-themes";
+import DropTriangle from "./dropTriangle";
 interface dataType {
   priceChange: string;
   lastPrice: string;
@@ -13,6 +15,7 @@ interface dataType {
 }
 
 export default function Currency() {
+  const { theme, setTheme } = useTheme();
   const [drop, setDrop] = useState(false);
   const [data, setData] = useState<dataType[]>([
     { priceChange: "", lastPrice: "", symbol: "" },
@@ -54,12 +57,18 @@ export default function Currency() {
           className="flex items-center cursor-pointer "
           onClick={() => setDrop(!drop)}
         >
-          <div className="text-sm pr-2 font-bold">
+          <div className="text-sm pr-2 font-bold ">
             {selected.symbol.split("USDT")[0]}
           </div>
           <div className="pr-2">
             {parseInt(selected.priceChange) > 0 ? (
-              <Image src={triGreen} alt="increase" width={8} height={8} />
+              <Image
+                src={triGreen}
+                alt="increase"
+                width={8}
+                height={8}
+                className="fill"
+              />
             ) : (
               <Image
                 src={triRed}
@@ -73,18 +82,12 @@ export default function Currency() {
           <div className="text-sm pr-2">
             {parseInt(selected.lastPrice) || " "}{" "}
           </div>
-          <Image
-            src={triBlack}
-            alt="triangle"
-            width={8}
-            height={8}
-            className="rotate-180"
-          />
+          <DropTriangle />
         </div>
         <div
           className={` ${
             !drop && "hidden"
-          } absolute bg-slate-50 p-5 text-sm rounded-sm`}
+          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-dark`}
         >
           {data.map((current: dataType) => {
             return (
