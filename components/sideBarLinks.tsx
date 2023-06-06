@@ -10,7 +10,7 @@ interface Props {
 export default function SideBarLinks({ tr, en, path }: Props) {
   const { language } = useContext(LanguageContext);
   return (
-    <Link href={`/tr/${path}`}>
+    <Link href={`/${path}`}>
       <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
         <div className="w-44 block ml-auto">{language === "TR" ? tr : en}</div>
       </li>
