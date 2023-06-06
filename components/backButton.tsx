@@ -12,7 +12,7 @@ export default function BackButton() {
   }
   return (
     <div
-      className="left-64 fixed text-lg font-bold underline text-side-text-color cursor-pointer"
+      className="ml-8 fixed text-lg font-bold underline text-side-text-color cursor-pointer"
       onClick={handleClick}
     >
       {language === "TR" ? "←Geri" : "←Back"}

@@ -10,8 +10,9 @@ export default async function Page({ params }: { params: { id: string } }) {
   const data: dataType = await response.json();
   return (
     <>
+      <BackButton />
+
       <div className="flex flex-col w-800 m-auto py-10 ">
-        <BackButton />
         <div className="font-bold text-5xl">{data.title}</div>
         {data.context.map((x, i) => {
           if (
@@ -23,9 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           ) {
             return <img src={x} alt="image" className="py-10" />;
           }
-          // if (x.includes("content-iframe")) {
-          //   return <div className="h-508 w-full">{parse(x)}</div>;
-          // }
+
           return <div className="py-3">{parse(x)}</div>;
         })}
       </div>
