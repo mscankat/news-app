@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import intervalToDuration from "date-fns/intervalToDuration";
-import { useState } from "react";
+import { useContext } from "react";
 function getDuration(date: number) {
   const interval = intervalToDuration({
     start: new Date(date),
@@ -61,7 +61,6 @@ interface Props {
 
 export default function Card({ newsData }: Props) {
   //   console.log(newsData);
-
   return (
     <>
       <Link href={"/news/" + newsData._id}>

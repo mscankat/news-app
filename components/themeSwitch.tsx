@@ -19,7 +19,8 @@ export default function ThemeSwitch() {
       <label className="switch">
         <input
           type="checkbox"
-          onClick={(e) => setTheme(theme === "dark" ? "light" : "dark")}
+          checked={theme === "dark"}
+          onChange={(e) => setTheme(theme === "dark" ? "light" : "dark")}
         />
         <span className="slider round"></span>
       </label>

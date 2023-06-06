@@ -1,0 +1,60 @@
+{
+  "tr": {
+    "sidebar": {
+      "breaking": "GÜNDEM",
+      "technology": "BİLİM VE TEKNOLOJİ",
+      "finance": "EKONOMİ",
+      "mode": {
+        "dark": "karanlık",
+        "light": "aydınlık"
+      }
+    },
+    "searchbar": {
+      "placeholder": "Haber ara"
+    },
+    "slider": {
+      "title": "Ne Oldu?",
+      "subtitle": "GÜNDEM HABERLERİ"
+    },
+    "card": {
+      "time": {
+        "year": "YIL",
+        "month": "AY",
+        "week": "HAFTA",
+        "day": "GÜN",
+        "hour": "SAAT",
+        "minute": "DAKİKA",
+        "second": "SANİYE"
+      }
+    }
+  },
+  "en": {
+    "sidebar": {
+      "breaking": "BREAKING",
+      "technology": "SCIENCE & TECH",
+      "finance": "FINANCE",
+      "mode": {
+        "dark": "DARK",
+        "light": "LIGHT"
+      }
+    },
+    "searchbar": {
+      "placeholder": "Search news"
+    },
+    "slider": {
+      "title": "What's New?",
+      "subtitle": "Latest News"
+    },
+    "card": {
+      "time": {
+        "year": "YEARS",
+        "month": "MONTHS",
+        "week": "WEEKS",
+        "day": "DAYS",
+        "hour": "HOURS",
+        "minute": "MINUTES",
+        "second": "SECONDS"
+      }
+    }
+  }
+}

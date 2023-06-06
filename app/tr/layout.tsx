@@ -4,6 +4,8 @@ import ThemeSwitch from "@/components/themeSwitch";
 import Link from "next/link";
 import logoWhite from "/public/images/logo-white.png";
 import TopPanel from "@/components/topPanel";
+import LanguageData from "@/public/local/language.json";
+import SideBarLinks from "@/components/sideBarLinks";
 
 export default function RootLayout({
   children,
@@ -18,21 +20,21 @@ export default function RootLayout({
             <Image src={logoWhite} alt="logo" width={128} height={128} />
           </Link>
           <ul className="flex w-full  flex-col text-xs font-bold text-side-text-color ">
-            <Link href="/tr/breaking">
-              <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
-                <div className="w-44 block ml-auto">BREAKING NEWS </div>
-              </li>
-            </Link>
-            <Link href="/tr/technology">
-              <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
-                <div className="w-44 block ml-auto"> SCIENCE & TECH</div>
-              </li>
-            </Link>
-            <Link href="/tr/finance">
-              <li className="hover:bg-side-light-second hover:text-side-hover-text py-7 right transition-all">
-                <div className="w-44 block ml-auto"> FINANCE</div>
-              </li>
-            </Link>
+            <SideBarLinks
+              tr={LanguageData.tr.sidebar.breaking}
+              en={LanguageData.en.sidebar.breaking}
+              path="breaking"
+            />
+            <SideBarLinks
+              tr={LanguageData.tr.sidebar.technology}
+              en={LanguageData.en.sidebar.technology}
+              path="technology"
+            />
+            <SideBarLinks
+              tr={LanguageData.tr.sidebar.finance}
+              en={LanguageData.en.sidebar.finance}
+              path="finance"
+            />
           </ul>
           <div>
             <ThemeSwitch />

@@ -4,7 +4,7 @@ async function getData(url: string) {
   const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error("Failed to fetch");
+    console.log("fetch failed");
   }
   return await response.json();
 }
@@ -23,7 +23,7 @@ interface datatype {
 }
 export default async function Breaking() {
   const data: datatype[] = await getData(
-    "http://3.73.132.230:3001/api/getMany/breaking/30"
+    "http://localhost:3001/api/getMany/breaking/30"
   );
   const sliderData = data.slice(0, 9);
   const feedData = data.slice(9, 30);
