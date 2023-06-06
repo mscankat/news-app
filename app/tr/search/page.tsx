@@ -25,7 +25,7 @@ export default async function Page({
   searchParams: { [key: string]: string };
 }) {
   console.log(searchParams.q);
-  const apiURL = new URL("http://3.73.132.230:3001/api/search");
+  const apiURL = new URL("http://localhost:3001/api/search");
   apiURL.searchParams.set("q", searchParams.q);
   console.log(apiURL.href);
 

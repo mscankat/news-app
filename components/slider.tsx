@@ -1,7 +1,10 @@
 "use client";
+import { LanguageContext } from "@/context/context";
 import Card from "./card";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
+import { useContext, useEffect } from "react";
+import LanguageData from "@/public/local/language.json";
 interface datatype {
   _id: string;
   date: number;
@@ -26,6 +29,13 @@ export default function Slider({ data }: Props) {
       // add plugins here
     ]
   );
+  const { language } = useContext(LanguageContext);
+  let ln;
+  if (language === "TR") {
+    ln = LanguageData.tr;
+  } else {
+    ln = LanguageData.en;
+  }
   function handleClick(event: React.MouseEvent) {
     event.preventDefault();
     instanceRef.current?.prev();
@@ -39,9 +49,9 @@ export default function Slider({ data }: Props) {
     <>
       <div className="w-1024 h-508 bg-white rounded-md ">
         <div className="flex justify-between pt-10 px-14 items-baseline">
-          <div className="font-extrabold text-3xl">What's New</div>
+          <div className="font-extrabold text-3xl">{ln.slider.title}</div>
           <div className="text-xs tracking-wider font-semibold">
-            Latest News
+            {ln.slider.subtitle}
           </div>
         </div>
         <div ref={sliderRef} className="keen-slider relative">

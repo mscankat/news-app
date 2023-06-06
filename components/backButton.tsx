@@ -1,7 +1,10 @@
 "use client";
+import { LanguageContext } from "@/context/context";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 export default function BackButton() {
+  const { language } = useContext(LanguageContext);
   const router = useRouter();
   function handleClick(event: React.MouseEvent) {
     event.preventDefault;
@@ -12,7 +15,7 @@ export default function BackButton() {
       className="left-64 fixed text-lg font-bold underline text-side-text-color cursor-pointer"
       onClick={handleClick}
     >
-      ←Back
+      {language === "TR" ? "←Geri" : "←Back"}
     </div>
   );
 }

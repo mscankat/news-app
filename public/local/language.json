@@ -5,8 +5,8 @@
       "technology": "BİLİM VE TEKNOLOJİ",
       "finance": "EKONOMİ",
       "mode": {
-        "dark": "karanlık",
-        "light": "aydınlık"
+        "dark": "koyu",
+        "light": "açık"
       }
     },
     "searchbar": {

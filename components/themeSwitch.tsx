@@ -1,14 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import LanguageData from "@/public/local/language.json";
+import { LanguageContext } from "@/context/context";
 
 export default function ThemeSwitch() {
+  const { language } = useContext(LanguageContext);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  let ln;
+  if (language === "TR" ? (ln = LanguageData.tr) : (ln = LanguageData.en))
+    useEffect(() => {
+      setMounted(true);
+    }, []);
 
   if (!mounted) {
     return null;
@@ -25,7 +29,7 @@ export default function ThemeSwitch() {
         <span className="slider round"></span>
       </label>
       <div className="text-xs font-bold uppercase leading-6 text-side-text-color transition-all ">
-        {theme}
+        {theme === "dark" ? ln.sidebar.mode.dark : ln.sidebar.mode.light}
       </div>
     </div>
   );

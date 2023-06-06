@@ -6,9 +6,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     title: string;
     description: string;
   }
-  const response = await fetch(
-    `http://3.73.132.230:3001/api/getOne/${params.id}`
-  );
+  const response = await fetch(`http://localhost:3001/api/getOne/${params.id}`);
   const data: dataType = await response.json();
   return (
     <>
