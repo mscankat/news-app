@@ -24,11 +24,10 @@ export default async function Page({
 }: {
   searchParams: { [key: string]: string };
 }) {
-  console.log(searchParams.q);
-  const apiURL = new URL("http://localhost:3001/api/search");
+  const apiURL = new URL(
+    "https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/search"
+  );
   apiURL.searchParams.set("q", searchParams.q);
-  console.log(apiURL.href);
-
   const data: datatype[] = await getData(apiURL.href);
   return (
     <>

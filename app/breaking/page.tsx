@@ -23,7 +23,7 @@ interface datatype {
 }
 export default async function Breaking() {
   const data: datatype[] = await getData(
-    "http://localhost:3001/api/getMany/breaking/30"
+    "https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getMany/breaking/30"
   );
   const sliderData = data.slice(0, 9);
   const feedData = data.slice(9, 30);
