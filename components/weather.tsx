@@ -1,7 +1,5 @@
 "use client";
 import { use, useEffect, useState } from "react";
-import Image from "next/image";
-import triBlack from "public/images/tri_black.png";
 import { setIconPath } from "@/utils/setIconPath";
 import axios from "axios";
 import DropTriangle from "./dropTriangle";

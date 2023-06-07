@@ -11,7 +11,9 @@ const defaultValues: contextType = {
 export const LanguageContext = createContext<contextType>(defaultValues);
 
 export default function Context({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState("TR");
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") || "TR"
+  );
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}

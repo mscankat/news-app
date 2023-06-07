@@ -3,10 +3,7 @@ import Image from "next/image";
 import { useState, useEffect, use } from "react";
 import triGreen from "public/images/tri_green.png";
 import triRed from "public/images/tri_red.png";
-import triBlack from "public/images/tri_black.png";
-import triWhite from "public/images/tri_white.png";
 import axios from "axios";
-import { useTheme } from "next-themes";
 import DropTriangle from "./dropTriangle";
 interface dataType {
   priceChange: string;
@@ -15,7 +12,6 @@ interface dataType {
 }
 
 export default function Currency() {
-  const { theme, setTheme } = useTheme();
   const [drop, setDrop] = useState(false);
   const [data, setData] = useState<dataType[]>([
     { priceChange: "", lastPrice: "", symbol: "" },

@@ -1,38 +1,21 @@
 "use client";
 import { LanguageContext } from "@/context/context";
 import { useContext } from "react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import triBlack from "public/images/tri_black.png";
 import DropTriangle from "./dropTriangle";
-
 export default function LanguageSelector() {
   const { language, setLanguage } = useContext(LanguageContext);
-  const router = useRouter();
-  const pathName = usePathname();
-
-  // const [language, setLanguage] = useState("TR");
   const [drop, setDrop] = useState(false);
-  useEffect(() => {
-    if (pathName.includes("/en")) {
-      setLanguage("EN");
-    }
-  }, []);
 
   function handleClick(event: React.MouseEvent) {
     if (event.currentTarget.innerHTML.includes("EN")) {
       setLanguage("EN");
+      localStorage.setItem("language", "EN");
       setDrop(false);
-      // if (!pathName.includes("/en")) {
-      //   router.push("/en" + pathName);
-      // }
     } else {
       setLanguage("TR");
+      localStorage.setItem("language", "TR");
       setDrop(false);
-      // if (pathName.includes("/en")) {
-      //   router.push(pathName.split("/en")[1]);
-      // }
     }
   }
   const [mounted, setMounted] = useState(false);
