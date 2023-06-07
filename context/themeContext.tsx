@@ -16,12 +16,13 @@ export default function ColorContext({
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState("");
   useEffect(() => {
+    setTheme(localStorage.getItem("theme") || "light");
     document
       .getElementsByTagName("html")[0]
       .setAttribute("class", localStorage.getItem("theme") || "light");
-  });
+  }, []);
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}

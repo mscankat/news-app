@@ -24,11 +24,13 @@ export default async function Page({ params }: { params: { id: string } }) {
               x.includes("png") ||
               x.includes("gif"))
           ) {
-            return <img src={x} alt="image" className="py-10" />;
+            return <img src={x} alt="image" className="py-10" key={i} />;
           }
 
           return (
-            <div className="py-3 dark:text-side-light-text">{parse(x)}</div>
+            <div className="py-3 dark:text-side-light-text" key={i}>
+              {parse(x)}
+            </div>
           );
         })}
       </div>

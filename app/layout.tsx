@@ -10,22 +10,18 @@ import logoWhite from "/public/images/logo-white.png";
 import TopPanel from "@/components/topPanel";
 import LanguageData from "@/public/local/language.json";
 import SideBarLinks from "@/components/sideBarLinks";
-import ColorContext, { ThemeContext } from "@/context/themeContext";
-import { useContext } from "react";
+import ColorContext from "@/context/themeContext";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { theme } = useContext(ThemeContext);
-  console.log(theme);
   return (
     <ColorContext>
       <html lang="en" suppressHydrationWarning>
         <body className={`${inter.className} bg-light dark:bg-dark`}>
           <Context>
-            {/* <Providers> */}
             <div className="flex">
               <div className="fixed w-60 h-screen bg-side-light dark:bg-side-dark flex flex-col items-center gap-10 transition-colors">
                 <Link href="/">
@@ -59,7 +55,6 @@ export default function RootLayout({
                 </div>
               </div>
             </div>
-            {/* </Providers> */}
           </Context>
         </body>
       </html>

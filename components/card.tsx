@@ -4,6 +4,8 @@ import intervalToDuration from "date-fns/intervalToDuration";
 import { useContext } from "react";
 import LanguageData from "@/public/local/language.json";
 import { LanguageContext } from "@/context/context";
+import Image from "next/image";
+
 function getDuration(date: number, ln: string) {
   let language;
   if (ln === "TR") {
@@ -85,11 +87,13 @@ export default function Card({ newsData }: Props) {
       <Link href={"/news/" + newsData._id}>
         <div className="rounded-md bg-white w-80 hover:shadow-lg transition-shadow dark:bg-card-dark dark:hover:shadow-card-dark ">
           <div className="p-3">
-            <img
+            <Image
               src={newsData.image}
               alt=""
+              width={320}
+              height={176}
               className="rounded-md w-80 h-44 object-cover"
-            ></img>
+            ></Image>
             <div className="flex justify-between py-3">
               <div className="text-xs font-semibold uppercase dark:text-side-light-text">
                 {new URL(newsData.link).hostname.split(".")[1]}

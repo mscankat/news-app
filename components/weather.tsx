@@ -1,8 +1,9 @@
 "use client";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { setIconPath } from "@/utils/setIconPath";
 import axios from "axios";
 import DropTriangle from "./dropTriangle";
+import Image from "next/image";
 
 interface dataType {
   location: {
@@ -60,7 +61,7 @@ export default function Weather() {
           className="flex items-center cursor-pointer"
           onClick={() => setDrop(!drop)}
         >
-          <img
+          <Image
             src={setIconPath(data.current.condition.code, data.current.is_day)}
             alt=""
             width={25}

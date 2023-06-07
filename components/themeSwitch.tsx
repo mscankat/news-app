@@ -9,10 +9,10 @@ export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useContext(ThemeContext);
   let ln;
-  if (language === "TR" ? (ln = LanguageData.tr) : (ln = LanguageData.en))
-    useEffect(() => {
-      setMounted(true);
-    }, []);
+  language === "TR" ? (ln = LanguageData.tr) : (ln = LanguageData.en);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
     return null;
