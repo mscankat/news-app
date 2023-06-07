@@ -1,17 +1,17 @@
 "use client";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import React, { useContext, useEffect, useState } from "react";
 import searchGray from "public/images/search-gray.png";
 import searchBlack from "public/images/search-black.png";
 import { useRouter } from "next/navigation";
 import LanguageData from "@/public/local/language.json";
 import { LanguageContext } from "@/context/context";
+import { ThemeContext } from "@/context/themeContext";
 
 export default function Search() {
   const { language } = useContext(LanguageContext);
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
+  const { theme } = useContext(ThemeContext);
   const [mount, setMount] = useState(false);
   const [input, setInput] = useState("");
   let baseUrl: URL;
@@ -45,7 +45,7 @@ export default function Search() {
                 ? LanguageData.tr.searchbar.placeholder
                 : LanguageData.en.searchbar.placeholder
             }
-            className="text-lg bg-transparent outline-none font-bold pl-2 h-6"
+            className="text-lg bg-transparent outline-none font-bold pl-2 h-6 dark:text-side-light-text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />

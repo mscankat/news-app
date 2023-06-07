@@ -13,7 +13,9 @@ export default async function Page({ params }: { params: { id: string } }) {
       <BackButton />
 
       <div className="flex flex-col w-800 m-auto py-10 ">
-        <div className="font-bold text-5xl">{data.title}</div>
+        <div className="font-bold text-5xl dark:text-side-light-text">
+          {data.title}
+        </div>
         {data.context.map((x, i) => {
           if (
             x.includes("http") &&
@@ -25,7 +27,9 @@ export default async function Page({ params }: { params: { id: string } }) {
             return <img src={x} alt="image" className="py-10" />;
           }
 
-          return <div className="py-3">{parse(x)}</div>;
+          return (
+            <div className="py-3 dark:text-side-light-text">{parse(x)}</div>
+          );
         })}
       </div>
     </>

@@ -29,25 +29,27 @@ export default function LanguageSelector() {
 
   return (
     <>
-      <div className="">
+      <div className="relative">
         <div
           className="flex items-center cursor-pointer"
           onClick={() => setDrop(!drop)}
         >
-          <div className="text-sm pr-1 font-bold">{language}</div>
+          <div className="text-sm pr-1 font-bold dark:text-side-light-text">
+            {language}
+          </div>
           <DropTriangle />
         </div>
         <div
           className={` ${
             !drop && "hidden"
-          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-dark`}
+          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-light-second right-0`}
         >
-          <div className="flex items-center mb-3 cursor-pointer">
+          <div className="flex items-center mb-3 cursor-pointer dark:text-side-light-text">
             <div className="text-sm pr-2 font-bold " onClick={handleClick}>
               EN
             </div>
           </div>
-          <div className="flex items-center  cursor-pointer">
+          <div className="flex items-center  cursor-pointer dark:text-side-light-text">
             <div className="text-sm pr-2 font-bold " onClick={handleClick}>
               TR
             </div>

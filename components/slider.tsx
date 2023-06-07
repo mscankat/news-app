@@ -49,8 +49,10 @@ export default function Slider({ data }: Props) {
     <>
       <div className="w-1024 h-508 bg-white rounded-md dark:bg-card-dark">
         <div className="flex justify-between pt-10 px-14 items-baseline">
-          <div className="font-extrabold text-3xl">{ln.slider.title}</div>
-          <div className="text-xs tracking-wider font-semibold">
+          <div className="font-extrabold text-3xl dark:text-side-light-text">
+            {ln.slider.title}
+          </div>
+          <div className="text-xs tracking-wider font-semibold dark:text-side-light-text">
             {ln.slider.subtitle}
           </div>
         </div>

@@ -1,13 +1,13 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import LanguageData from "@/public/local/language.json";
 import { LanguageContext } from "@/context/context";
+import { ThemeContext } from "@/context/themeContext";
 
 export default function ThemeSwitch() {
   const { language } = useContext(LanguageContext);
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useContext(ThemeContext);
   let ln;
   if (language === "TR" ? (ln = LanguageData.tr) : (ln = LanguageData.en))
     useEffect(() => {
@@ -17,6 +17,18 @@ export default function ThemeSwitch() {
   if (!mounted) {
     return null;
   }
+  function handleChange() {
+    if (theme === "dark") {
+      document.getElementsByTagName("html")[0].setAttribute("class", "light");
+      setTheme("light");
+      localStorage.setItem("theme", "light");
+    }
+    if (theme === "light") {
+      document.getElementsByTagName("html")[0].setAttribute("class", "dark");
+      setTheme("dark");
+      localStorage.setItem("theme", "dark");
+    }
+  }
 
   return (
     <div className="flex content-center gap-5 mr-3">
@@ -24,7 +36,7 @@ export default function ThemeSwitch() {
         <input
           type="checkbox"
           checked={theme === "dark"}
-          onChange={(e) => setTheme(theme === "dark" ? "light" : "dark")}
+          onChange={handleChange}
         />
         <span className="slider round"></span>
       </label>

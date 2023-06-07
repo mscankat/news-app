@@ -66,14 +66,18 @@ export default function Weather() {
             width={25}
             height={25}
           />
-          <div className="text-sm pr-1 font-bold">{data.location.name}</div>
-          <div className="text-sm pr-1">{data.current.temp_c} </div>
+          <div className="text-sm pr-1 font-bold dark:text-side-light-text">
+            {data.location.name}
+          </div>
+          <div className="text-sm pr-1 dark:text-side-light-text">
+            {data.current.temp_c}{" "}
+          </div>
           <DropTriangle />
         </div>
         <div
           className={` ${
             !drop && "hidden"
-          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-dark`}
+          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-light-second`}
         >
           {/* <div className="flex items-center mb-3 cursor-pointer">
             <div className="text-sm pr-2 font-bold " onClick={handleClick}>
