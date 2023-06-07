@@ -53,7 +53,7 @@ export default function Currency() {
           className="flex items-center cursor-pointer "
           onClick={() => setDrop(!drop)}
         >
-          <div className="text-sm pr-2 font-bold ">
+          <div className="text-sm pr-2 font-bold dark:text-side-light-text">
             {selected.symbol.split("USDT")[0]}
           </div>
           <div className="pr-2">
@@ -75,7 +75,7 @@ export default function Currency() {
               />
             )}
           </div>
-          <div className="text-sm pr-2">
+          <div className="text-sm pr-2 dark:text-side-light-text">
             {parseInt(selected.lastPrice) || " "}{" "}
           </div>
           <DropTriangle />
@@ -83,7 +83,7 @@ export default function Currency() {
         <div
           className={` ${
             !drop && "hidden"
-          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-dark`}
+          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-light-second`}
         >
           {data.map((current: dataType) => {
             return (
@@ -92,10 +92,10 @@ export default function Currency() {
                 onClick={handleClick}
                 className="flex items-center mb-3 cursor-pointer"
               >
-                <div className="text-sm pr-2 font-bold ">
+                <div className="text-sm pr-2 font-bold dark:text-side-light-text">
                   {current.symbol.split("USDT")[0]}{" "}
                 </div>
-                <div className="pr-2">
+                <div className="pr-2 ">
                   {parseInt(current.priceChange) || 0 > 0 ? (
                     <Image src={triGreen} alt="increase" width={8} height={8} />
                   ) : (
@@ -109,7 +109,7 @@ export default function Currency() {
                   )}{" "}
                 </div>
 
-                <div className="text-sm">
+                <div className="text-sm dark:text-side-light-text">
                   {parseInt(current.lastPrice) || ""}{" "}
                 </div>
               </div>

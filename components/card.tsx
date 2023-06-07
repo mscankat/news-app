@@ -91,14 +91,16 @@ export default function Card({ newsData }: Props) {
               className="rounded-md w-80 h-44 object-cover"
             ></img>
             <div className="flex justify-between py-3">
-              <div className="text-xs font-semibold uppercase">
+              <div className="text-xs font-semibold uppercase dark:text-side-light-text">
                 {new URL(newsData.link).hostname.split(".")[1]}
               </div>
-              <div className="text-xxs ">
+              <div className="text-xxs dark:text-side-light-text">
                 {getDuration(newsData.date, language)}
               </div>
             </div>
-            <div className="text-lg font-bold pb-3">{newsData.title}</div>
+            <div className="text-lg font-bold pb-3 dark:text-side-light-text">
+              {newsData.title}
+            </div>
           </div>
         </div>
       </Link>

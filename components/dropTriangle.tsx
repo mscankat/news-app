@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import triWhite from "../public/images/tri_white.png";
 import triBlack from "../public/images/tri_black.png";
+import { useContext } from "react";
+import { ThemeContext } from "@/context/themeContext";
 
 export default function DropTriangle() {
-  const { theme } = useTheme();
+  const { theme } = useContext(ThemeContext);
   return (
     <div className="">
       {theme === "dark" ? (
