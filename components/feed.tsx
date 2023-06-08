@@ -14,7 +14,6 @@ interface Props {
 }
 
 export default function Feed({ data }: Props) {
-  data;
   let left = [];
   let middle = [];
   let right = [];
@@ -31,16 +30,6 @@ export default function Feed({ data }: Props) {
     if (data.indexOf(item) % 3 === 2) {
       right.push(item);
     }
-  }
-  function after(count: number, f: VoidFunction) {
-    let noOfCalls = 0;
-    return function () {
-      console.log(noOfCalls);
-      noOfCalls = noOfCalls + 1;
-      if (count === noOfCalls) {
-        f();
-      }
-    };
   }
 
   return (
