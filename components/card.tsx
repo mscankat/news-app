@@ -80,20 +80,39 @@ interface Props {
 }
 
 export default function Card({ newsData }: Props) {
-  //   console.log(newsData);
   const { language } = useContext(LanguageContext);
+  const allowed = [
+    "ichef.bbci.co.uk",
+    "cdn.webtekno.com",
+    "www.webtekno.com",
+    "geoim.bloomberght.com",
+  ];
+  const hostname = new URL(newsData.image).hostname;
+  !allowed.includes(hostname) && console.log("asd");
+
   return (
     <>
       <Link href={"/news/" + newsData._id}>
         <div className="rounded-md bg-white w-80 hover:shadow-lg transition-shadow dark:bg-card-dark dark:hover:shadow-card-dark ">
           <div className="p-3">
-            <Image
-              src={newsData.image}
-              alt=""
-              width={320}
-              height={176}
-              className="rounded-md w-80 h-44 object-cover"
-            ></Image>
+            {allowed.includes(hostname) ? (
+              <Image
+                src={newsData.image}
+                alt=""
+                width={320}
+                height={176}
+                className="rounded-md  object-cover"
+              />
+            ) : (
+              <img
+                src={newsData.image}
+                alt=""
+                width={320}
+                height={176}
+                className="rounded-md object-cover"
+              />
+            )}
+
             <div className="flex justify-between py-3">
               <div className="text-xs font-semibold uppercase dark:text-side-light-text">
                 {new URL(newsData.link).hostname.split(".")[1]}
