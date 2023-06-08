@@ -32,8 +32,10 @@ export default function Currency() {
   }, []);
 
   function handleClick(event: React.MouseEvent) {
-    const symbol = event.currentTarget.firstElementChild?.innerHTML;
+    const symbol = event.currentTarget.textContent?.slice(0, 3);
+    console.log(symbol);
     for (const sym of data) {
+      console.log(sym);
       if (sym.symbol.includes(symbol || "")) {
         setSelected(sym);
         setDrop(!drop);
@@ -83,14 +85,14 @@ export default function Currency() {
         <div
           className={` ${
             !drop && "hidden"
-          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-light-second`}
+          } absolute bg-slate-50 py-2 text-sm rounded-sm dark:bg-side-light-second z-10`}
         >
           {data.map((current: dataType) => {
             return (
               <div
                 key={current.symbol}
                 onClick={handleClick}
-                className="flex items-center mb-3 cursor-pointer"
+                className="flex items-center  cursor-pointer hover:bg-side-text-color px-5 py-2 "
               >
                 <div className="text-sm pr-2 font-bold dark:text-side-light-text">
                   {current.symbol.split("USDT")[0]}{" "}

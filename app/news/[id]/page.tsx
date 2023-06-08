@@ -6,6 +6,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     context: string[];
     title: string;
     description: string;
+    link: string;
+    category: string;
   }
   const response = await fetch(
     `https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getOne/${params.id}`
@@ -20,6 +22,15 @@ export default async function Page({ params }: { params: { id: string } }) {
           {data.title}
         </div>
         {data.context.map((x, i) => {
+          if (data.category === "finance") {
+            return i === 0 ? (
+              <img src={x} alt="image" className="py-9" key={i} />
+            ) : (
+              <div className="py-3 dark:text-side-light-text" key={i}>
+                {parse(x)}
+              </div>
+            );
+          }
           if (
             x.includes("http") &&
             (x.includes("jpg") ||
@@ -35,6 +46,13 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           );
         })}
+        <a
+          href={data.link}
+          className="dark:text-side-light-text mb-5  italic flex"
+        >
+          (<div className="dark:text-side-light-text mr-1">Kaynak: </div>{" "}
+          <div className="dark:text-slate-600">{data.link}</div>)
+        </a>
       </div>
     </>
   );

@@ -42,15 +42,21 @@ export default function LanguageSelector() {
         <div
           className={` ${
             !drop && "hidden"
-          } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-light-second right-0`}
+          } absolute bg-slate-50 py-2 text-sm rounded-sm dark:bg-side-light-second right-0`}
         >
-          <div className="flex items-center mb-3 cursor-pointer dark:text-side-light-text">
-            <div className="text-sm pr-2 font-bold " onClick={handleClick}>
+          <div className="flex items-center  cursor-pointer dark:text-side-light-text">
+            <div
+              className="text-sm py-2 px-5  font-bold hover:bg-side-text-color"
+              onClick={handleClick}
+            >
               EN
             </div>
           </div>
           <div className="flex items-center  cursor-pointer dark:text-side-light-text">
-            <div className="text-sm pr-2 font-bold " onClick={handleClick}>
+            <div
+              className="text-sm py-2 px-5 font-bold hover:bg-side-text-color"
+              onClick={handleClick}
+            >
               TR
             </div>
           </div>

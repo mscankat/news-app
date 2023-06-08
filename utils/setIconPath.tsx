@@ -53,6 +53,9 @@ export function setIconPath(code: number, isday: number) {
     case "1240":
       source = "/images/1530364_rain_storm_shower_weather.svg";
       break;
+    case "1276":
+      source = "/images/1530364_rain_storm_shower_weather.svg";
+      break;
     default:
       source = "";
       break;
