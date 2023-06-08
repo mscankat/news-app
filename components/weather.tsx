@@ -40,7 +40,7 @@ export default function Weather() {
   useEffect(() => {
     axios
       .get(
-        "http://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=istanbul&aqi=yes"
+        "https://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=istanbul&aqi=yes"
       )
       .then((response) => {
         setData(response.data);
@@ -79,13 +79,7 @@ export default function Weather() {
           className={` ${
             !drop && "hidden"
           } absolute bg-slate-50 p-5 text-sm rounded-sm dark:bg-side-light-second`}
-        >
-          {/* <div className="flex items-center mb-3 cursor-pointer">
-            <div className="text-sm pr-2 font-bold " onClick={handleClick}>
-              EN
-            </div>
-          </div> */}
-        </div>
+        ></div>
       </div>
     </>
   );

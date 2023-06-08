@@ -1,4 +1,5 @@
 import BackButton from "@/components/backButton";
+import ScrollToTop from "@/components/scrollToTop";
 import parse from "html-react-parser";
 export default async function Page({ params }: { params: { id: string } }) {
   interface dataType {
@@ -12,6 +13,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const data: dataType = await response.json();
   return (
     <>
+      <ScrollToTop />
       <BackButton />
       <div className="flex flex-col w-800 m-auto py-10 ">
         <div className="font-bold text-5xl dark:text-side-light-text">
