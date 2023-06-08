@@ -1,7 +1,5 @@
-import Feed from "@/components/feed";
 import Scroll from "@/components/infiniteScroll";
 import Slider from "@/components/slider";
-import InfiniteScroll from "react-infinite-scroll-component";
 async function getData(url: string) {
   const response = await fetch(url);
 

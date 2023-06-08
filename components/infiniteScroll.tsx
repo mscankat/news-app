@@ -1,13 +1,14 @@
 "use client";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Feed from "./feed";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "@/context/dataContext";
 interface datatype {
   _id: string;
   date: number;
   link: string;
   title: string;
-  description?: string;
+
   context: string[];
   image: string;
 }
@@ -26,7 +27,14 @@ export default function Scroll({
   first: datatype[];
   category: string;
 }) {
-  const [data, setData] = useState<datatype[]>(first);
+  const { data, setData } = useContext(DataContext);
+  useEffect(() => {
+    if (data.length < 3) {
+      setData(first);
+    }
+  }, []);
+  //   const [data, setData] = useState<datatype[]>(first);
+  const [test, setTest] = useState<datatype[]>();
   async function nextData() {
     const response = await fetch(
       `https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getMany/${category}/21/${
@@ -35,6 +43,7 @@ export default function Scroll({
     );
     const newData = await response.json();
     setData((data) => [...data, ...newData]);
+    setTest(data);
   }
   return (
     <InfiniteScroll
@@ -43,7 +52,7 @@ export default function Scroll({
       hasMore={true}
       loader={""}
     >
-      <Feed data={data} />
+      <Feed data={data.length < 2 ? first : data} />
     </InfiniteScroll>
   );
 }

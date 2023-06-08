@@ -101,7 +101,7 @@ export default function Card({ newsData }: Props) {
                 alt=""
                 width={320}
                 height={176}
-                className="rounded-md w-80 h-44 object-cover"
+                className="rounded-md  object-cover"
               />
             ) : (
               <img
@@ -109,7 +109,7 @@ export default function Card({ newsData }: Props) {
                 alt=""
                 width={320}
                 height={176}
-                className="rounded-md w-80 h-44 object-cover"
+                className="rounded-md object-cover"
               />
             )}
 
