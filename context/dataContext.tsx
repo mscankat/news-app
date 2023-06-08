@@ -1,6 +1,5 @@
 "use client";
 import { createContext, useState } from "react";
-import { FunctionDeclaration } from "typescript";
 
 interface datatype {
   _id: string;

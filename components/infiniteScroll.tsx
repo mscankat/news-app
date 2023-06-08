@@ -34,7 +34,6 @@ export default function Scroll({
     }
   }, []);
   //   const [data, setData] = useState<datatype[]>(first);
-  const [test, setTest] = useState<datatype[]>();
   async function nextData() {
     const response = await fetch(
       `https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getMany/${category}/21/${
@@ -43,7 +42,6 @@ export default function Scroll({
     );
     const newData = await response.json();
     setData((data) => [...data, ...newData]);
-    setTest(data);
   }
   return (
     <InfiniteScroll

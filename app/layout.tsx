@@ -20,9 +20,9 @@ export default function RootLayout({
   return (
     <DataContextProvider>
       <ColorContext>
-        <html lang="en" suppressHydrationWarning>
-          <body className={`${inter.className} bg-light dark:bg-dark`}>
-            <Context>
+        <Context>
+          <html lang="en" suppressHydrationWarning>
+            <body className={`${inter.className} bg-light dark:bg-dark`}>
               <div className="flex">
                 <div className="fixed w-60 h-screen bg-side-light dark:bg-side-dark flex flex-col items-center gap-10 transition-colors">
                   <Link href="/">
@@ -61,9 +61,9 @@ export default function RootLayout({
                   </div>
                 </div>
               </div>
-            </Context>
-          </body>
-        </html>
+            </body>
+          </html>
+        </Context>
       </ColorContext>
     </DataContextProvider>
   );
