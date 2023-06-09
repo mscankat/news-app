@@ -35,21 +35,8 @@ export default function Weather() {
     },
   });
   const [mounted, setMounted] = useState(false);
-  const [data, setData] = useState<dataType[]>([
-    {
-      location: {
-        name: "",
-      },
-      current: {
-        temp_c: 0,
-        temp_f: 0,
-        is_day: 0,
-        condition: {
-          code: 0,
-        },
-      },
-    },
-  ]);
+  const [data, setData] = useState<dataType[]>([]);
+
   function handleClick(event: React.MouseEvent) {
     const symbol = event.currentTarget.textContent;
     console.log(symbol);
@@ -61,30 +48,27 @@ export default function Weather() {
       }
     }
   }
+
   function getData(url: string) {
     return axios.get(url).then((response) => {
       setData((current) => [...current, response.data]);
       setSelected(response.data);
+      setMounted(true);
     });
   }
 
   useEffect(() => {
-    getData(
-      "https://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=istanbul&aqi=yes"
-    ).finally(() => {
-      setMounted(true);
-      setData((current) => [current[1]]);
-    });
-    getData(
-      "https://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=ankara&aqi=yes"
-    );
-    getData(
-      "https://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=izmir&aqi=yes"
-    );
-    getData(
-      "https://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=kayseri&aqi=yes"
-    );
+    setData([]);
+    const citys = ["istanbul", "izmir", "ankara", "kayseri"];
+    for (const city of citys) {
+      const apiLink = `https://api.weatherapi.com/v1/current.json?key=13f2370015ba4cc49fa193438232704&q=${city}&aqi=yes`;
+      getData(apiLink);
+    }
   }, []);
+
+  useEffect(() => {
+    setSelected(data[0]);
+  }, [data]);
 
   if (!mounted) {
     return null;
