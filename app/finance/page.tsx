@@ -2,7 +2,7 @@ import Feed from "@/components/feed";
 import Scroll from "@/components/infiniteScroll";
 import Slider from "@/components/slider";
 async function getData(url: string) {
-  const response = await fetch(url);
+  const response = await fetch(url, { cache: "no-store" });
 
   if (!response.ok) {
     throw new Error("Failed to fetch");
