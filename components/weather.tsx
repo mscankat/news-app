@@ -39,7 +39,6 @@ export default function Weather() {
 
   function handleClick(event: React.MouseEvent) {
     const symbol = event.currentTarget.textContent;
-    console.log(symbol);
     for (const sym of data) {
       if (symbol?.includes(sym.location.name)) {
         setSelected(sym);

@@ -22,7 +22,6 @@ export default function Search() {
     event.preventDefault();
     baseUrl = new URL(window.location.origin + "/search");
     baseUrl.searchParams.set("q", input);
-    console.log(baseUrl.pathname + baseUrl.search);
     router.push(baseUrl.pathname + baseUrl.search);
   }
 

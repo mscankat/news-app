@@ -88,7 +88,6 @@ export default function Card({ newsData }: Props) {
     "geoim.bloomberght.com",
   ];
   const hostname = new URL(newsData.image).hostname;
-  !allowed.includes(hostname) && console.log("asd");
 
   return (
     <>

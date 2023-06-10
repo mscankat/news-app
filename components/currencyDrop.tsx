@@ -26,16 +26,13 @@ export default function Currency() {
       .then((response) => {
         setData(response.data);
         setSelected(response.data[0]);
-        console.log(response.data);
       })
       .finally(() => setMounted(true));
   }, []);
 
   function handleClick(event: React.MouseEvent) {
     const symbol = event.currentTarget.textContent?.slice(0, 3);
-    console.log(symbol);
     for (const sym of data) {
-      console.log(sym);
       if (sym.symbol.includes(symbol || "")) {
         setSelected(sym);
         setDrop(!drop);

@@ -1,8 +1,7 @@
-import Feed from "@/components/feed";
 import Scroll from "@/components/infiniteScroll";
 import Slider from "@/components/slider";
 async function getData(url: string) {
-  const response = await fetch(url, { cache: "no-store" });
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error("Failed to fetch");
@@ -36,3 +35,4 @@ export default async function Finance() {
     </>
   );
 }
+export const revalidate = 600;

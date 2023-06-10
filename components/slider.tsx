@@ -21,9 +21,7 @@ interface Props {
 export default function Slider({ data }: Props) {
   const [sliderRef, instanceRef] = useKeenSlider(
     {
-      slideChanged() {
-        console.log("slide changed");
-      },
+      slideChanged() {},
     },
     [
       // add plugins here

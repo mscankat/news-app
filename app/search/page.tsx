@@ -2,7 +2,6 @@ import Feed from "@/components/feed";
 async function getData(url: string) {
   try {
     const response = await fetch(url);
-    console.log(url);
     const result = await response.json();
     return result;
   } catch (e) {
