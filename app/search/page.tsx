@@ -1,7 +1,7 @@
 import Feed from "@/components/feed";
 async function getData(url: string) {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: "no-cache" });
     const result = await response.json();
     return result;
   } catch (e) {

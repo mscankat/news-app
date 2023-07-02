@@ -1,7 +1,7 @@
 import Scroll from "@/components/infiniteScroll";
 import Slider from "@/components/slider";
 async function getData(url: string) {
-  const response = await fetch(url);
+  const response = await fetch(url, { cache: "no-cache" });
 
   if (!response.ok) {
     console.log("fetch failed");
@@ -34,4 +34,3 @@ export default async function Breaking() {
     </>
   );
 }
-export const revalidate = 600;
