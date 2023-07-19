@@ -28,6 +28,10 @@ const dataSchema = new mongoose.Schema({
     required: false,
     type: String,
   },
+  _id: {
+    required: false,
+    type: Number,
+  },
 });
 
 export default mongoose.models.Data || mongoose.model("Data", dataSchema);

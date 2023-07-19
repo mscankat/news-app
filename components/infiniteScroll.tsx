@@ -3,6 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Feed from "./feed";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "@/context/dataContext";
+import urls from "@/public/local/urls.json";
 interface datatype {
   _id: string;
   date: number;
@@ -35,10 +36,9 @@ export default function Scroll({
   }, []);
   //   const [data, setData] = useState<datatype[]>(first);
   async function nextData() {
+    const url = urls.local;
     const response = await fetch(
-      `https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getMany/${category}/21/${
-        data.length + 9
-      }`
+      url + `/api/getMany/${category}/21/${data.length + 9}`
     );
     const newData = await response.json();
     setData((data) => [...data, ...newData]);
