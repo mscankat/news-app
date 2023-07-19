@@ -34,8 +34,9 @@ export default function Scroll({
       setData(first);
     }
   }, []);
+  //   const [data, setData] = useState<datatype[]>(first);
   async function nextData() {
-    const url = urls.prod;
+    const url = urls.local;
     const response = await fetch(
       url + `/api/getMany/${category}/21/${data.length + 9}`
     );

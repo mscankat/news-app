@@ -24,7 +24,7 @@ interface datatype {
   image: string;
 }
 export default async function Breaking() {
-  const url = urls.prod;
+  const url = urls.local;
   const data: datatype[] = await getData(url + "/api/getMany/breaking/30/0");
   const sliderData = data.slice(0, 9);
   const feedData = data.slice(9, 30);
