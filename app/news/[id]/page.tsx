@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     link: string;
     category: string;
   }
-  const url = urls.local;
+  const url = urls.prod;
   const response = await fetch(url + `/api/getOne/${params.id}`);
   const data: dataType = await response.json();
   return (

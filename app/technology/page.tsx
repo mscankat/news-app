@@ -24,7 +24,7 @@ interface datatype {
   category: string;
 }
 export default async function Finance() {
-  const url = urls.local;
+  const url = urls.prod;
   const data: datatype[] = await getData(url + "/api/getMany/tech/30/0");
   const sliderData = data.slice(0, 9);
   const feedData = data.slice(9, 30);
