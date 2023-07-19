@@ -24,7 +24,7 @@ export default async function Page({
 }: {
   searchParams: { [key: string]: string };
 }) {
-  const url = urls.local;
+  const url = urls.prod;
   const apiURL = new URL(url + "/api/search");
   apiURL.searchParams.set("q", searchParams.q);
   const data: datatype[] = await getData(apiURL.href);
