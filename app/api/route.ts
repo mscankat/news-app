@@ -3,7 +3,14 @@ import Model from "@/models/model";
 import connectMongo from "@/utils/connectMongo";
 export async function GET(request: Request) {
   await connectMongo();
-  const data = await Model.find({ category: "breaking" });
+  const data = await Model.aggregate([
+    {
+      $match: { category: "breaking" },
+    },
+  ])
+    .sort({ date: -1 })
+    .skip(0)
+    .limit(parseInt("50"));
   let response = NextResponse.json(data, { status: 200 });
   //   response.cookies.set("show-banner", "false");
 
