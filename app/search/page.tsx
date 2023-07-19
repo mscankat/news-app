@@ -2,7 +2,7 @@ import Feed from "@/components/feed";
 import urls from "@/public/local/urls.json";
 async function getData(url: string) {
   try {
-    const response = await fetch(url, { cache: "no-cache" });
+    const response = await fetch(url);
     const result = await response.json();
     return result;
   } catch (e) {
