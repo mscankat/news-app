@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
-
+import Model from "@/models/model";
+import connectMongo from "@/utils/connectMongo";
 export async function GET(request: Request) {
-  let response = NextResponse.json({ hello: "hello" }, { status: 200 });
-  response.cookies.set("show-banner", "false");
+  await connectMongo();
+  const data = await Model.find({ category: "breaking" });
+  let response = NextResponse.json(data, { status: 200 });
+  //   response.cookies.set("show-banner", "false");
+
   return response;
 }
 
