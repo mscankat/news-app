@@ -1,6 +1,8 @@
 import BackButton from "@/components/backButton";
 import ScrollToTop from "@/components/scrollToTop";
 import parse from "html-react-parser";
+import urls from "@/public/local/urls.json";
+
 export default async function Page({ params }: { params: { id: string } }) {
   interface dataType {
     context: string[];
@@ -9,9 +11,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     link: string;
     category: string;
   }
-  const response = await fetch(
-    `https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getOne/${params.id}`
-  );
+  const url = urls.local;
+  const response = await fetch(url + `/api/getOne/${params.id}`);
   const data: dataType = await response.json();
   return (
     <>

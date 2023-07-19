@@ -10,7 +10,7 @@ export async function GET(
   const skip = parseInt(params.skip);
   const category = params.category;
   const desiredAmount = params.desiredAmount;
-  console.log(category, desiredAmount, skip);
+  console.log(request.url);
   let response;
   try {
     const data = await Model.aggregate([

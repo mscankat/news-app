@@ -1,5 +1,6 @@
 import Scroll from "@/components/infiniteScroll";
 import Slider from "@/components/slider";
+import urls from "@/public/local/urls.json";
 async function getData(url: string) {
   const response = await fetch(url, { cache: "no-cache" });
 
@@ -23,9 +24,8 @@ interface datatype {
   category: string;
 }
 export default async function Finance() {
-  const data: datatype[] = await getData(
-    "https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getMany/tech/30/0"
-  );
+  const url = urls.local;
+  const data: datatype[] = await getData(url + "/api/getMany/tech/30/0");
   const sliderData = data.slice(0, 9);
   const feedData = data.slice(9, 30);
   return (

@@ -1,4 +1,5 @@
 import Feed from "@/components/feed";
+import urls from "@/public/local/urls.json";
 async function getData(url: string) {
   try {
     const response = await fetch(url, { cache: "no-cache" });
@@ -23,9 +24,8 @@ export default async function Page({
 }: {
   searchParams: { [key: string]: string };
 }) {
-  const apiURL = new URL(
-    "https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/search"
-  );
+  const url = urls.local;
+  const apiURL = new URL(url + "/api/search");
   apiURL.searchParams.set("q", searchParams.q);
   const data: datatype[] = await getData(apiURL.href);
   return (
