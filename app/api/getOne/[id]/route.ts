@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import Model from "@/models/model";
+import connectMongo from "@/utils/connectMongo";
 
 export async function GET(
   request: Request,
@@ -8,6 +9,7 @@ export async function GET(
   const id = params.id;
   let response;
   try {
+    await connectMongo();
     const data = await Model.findById(id);
     response = NextResponse.json(data, { status: 200 });
   } catch (error: any) {

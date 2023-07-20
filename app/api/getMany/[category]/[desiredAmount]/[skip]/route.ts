@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import Model from "@/models/model";
+import connectMongo from "@/utils/connectMongo";
 
 export async function GET(
   request: Request,
@@ -13,6 +14,7 @@ export async function GET(
   console.log(request.url);
   let response;
   try {
+    await connectMongo();
     const data = await Model.aggregate([
       {
         $match: { category: category },
