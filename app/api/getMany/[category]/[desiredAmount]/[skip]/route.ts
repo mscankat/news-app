@@ -23,7 +23,10 @@ export async function GET(
       .sort({ date: -1 })
       .skip(skip)
       .limit(parseInt(desiredAmount));
-    response = NextResponse.json(data, { status: 200 });
+    response = NextResponse.json(data, {
+      status: 200,
+      headers: { "Access-Control-Allow-Origin": "*" },
+    });
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }

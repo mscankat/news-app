@@ -33,7 +33,7 @@ export default function Scroll({
     if (data.length < 3) {
       setData(first);
     }
-  }, []);
+  });
   async function nextData() {
     const url = urls.prod + `/api/getMany/${category}/21/${data.length + 9}`;
     const response = await fetch(url);
