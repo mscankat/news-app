@@ -1,18 +1,25 @@
 import BackButton from "@/components/backButton";
 import ScrollToTop from "@/components/scrollToTop";
 import parse from "html-react-parser";
+import Model from "@/models/model";
+import connectMongo from "@/utils/connectMongo";
+
+async function getData(id: string) {
+  await connectMongo();
+  const data = await Model.findById(id);
+  return data;
+}
+
 export default async function Page({ params }: { params: { id: string } }) {
-  interface dataType {
+  interface datatype {
     context: string[];
     title: string;
     description: string;
     link: string;
     category: string;
   }
-  const response = await fetch(
-    `https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getOne/${params.id}`
-  );
-  const data: dataType = await response.json();
+  const getdata = await getData(params.id);
+  const data: datatype = JSON.parse(JSON.stringify(getdata));
   return (
     <>
       <ScrollToTop />

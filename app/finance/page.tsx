@@ -1,12 +1,20 @@
 import Scroll from "@/components/infiniteScroll";
 import Slider from "@/components/slider";
-async function getData(url: string) {
-  const response = await fetch(url, { cache: "no-cache" });
+import Model from "@/models/model";
+import connectMongo from "@/utils/connectMongo";
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch");
-  }
-  return await response.json();
+async function getData() {
+  const category = "finance";
+  await connectMongo();
+  const data = await Model.aggregate([
+    {
+      $match: { category: category },
+    },
+  ])
+    .sort({ date: -1 })
+    .skip(0)
+    .limit(30);
+  return data;
 }
 export const metadata = {
   title: "News",
@@ -23,9 +31,8 @@ interface datatype {
   category: string;
 }
 export default async function Finance() {
-  const data: datatype[] = await getData(
-    "https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getMany/finance/30/0"
-  );
+  const getdata = await getData();
+  const data: datatype[] = JSON.parse(JSON.stringify(getdata));
   const sliderData = data.slice(0, 9);
   const feedData = data.slice(9, 30);
   return (

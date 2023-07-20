@@ -1,6 +1,5 @@
 "use client";
 import { LanguageContext } from "@/context/context";
-import Link from "next/link";
 import { useContext } from "react";
 interface Props {
   tr: string;

@@ -32,14 +32,11 @@ export default function Scroll({
     if (data.length < 3) {
       setData(first);
     }
-  }, []);
-  //   const [data, setData] = useState<datatype[]>(first);
+  });
   async function nextData() {
-    const response = await fetch(
-      `https://khpycrjcxqx6xg4gpywmtzvr4a0uafez.lambda-url.eu-central-1.on.aws/api/getMany/${category}/21/${
-        data.length + 9
-      }`
-    );
+    const host = window.location.host;
+    const url = `https://${host}/api/getMany/${category}/21/${data.length + 9}`;
+    const response = await fetch(url);
     const newData = await response.json();
     setData((data) => [...data, ...newData]);
   }
