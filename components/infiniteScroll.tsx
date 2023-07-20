@@ -34,8 +34,8 @@ export default function Scroll({
     }
   });
   async function nextData() {
-    const host = window.location.host;
-    const url = `https://${host}/api/getMany/${category}/21/${data.length + 9}`;
+    const host = process.env.API_URL;
+    const url = `${host}/api/getMany/${category}/21/${data.length + 9}`;
     const response = await fetch(url);
     const newData = await response.json();
     setData((data) => [...data, ...newData]);
