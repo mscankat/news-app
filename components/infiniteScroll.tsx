@@ -35,10 +35,8 @@ export default function Scroll({
     }
   }, []);
   async function nextData() {
-    const url = urls.prod;
-    const response = await fetch(
-      url + `/api/getMany/${category}/21/${data.length + 9}`
-    );
+    const url = urls.prod + `/api/getMany/${category}/21/${data.length + 9}`;
+    const response = await fetch(url);
     const newData = await response.json();
     setData((data) => [...data, ...newData]);
   }

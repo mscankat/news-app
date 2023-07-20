@@ -1,12 +1,22 @@
 import Feed from "@/components/feed";
-import urls from "@/public/local/urls.json";
-async function getData(url: string) {
-  try {
-    const response = await fetch(url);
-    const result = await response.json();
-    return result;
-  } catch (e) {
-    console.log(e);
+import Model from "@/models/model";
+import connectMongo from "@/utils/connectMongo";
+
+async function getData(query: string | undefined) {
+  await connectMongo();
+  if (query) {
+    const data = await Model.aggregate([
+      {
+        $search: {
+          index: "turkish",
+          autocomplete: {
+            query: query,
+            path: "description",
+          },
+        },
+      },
+    ]);
+    return data;
   }
 }
 interface datatype {
@@ -24,10 +34,8 @@ export default async function Page({
 }: {
   searchParams: { [key: string]: string };
 }) {
-  const url = urls.prod;
-  const apiURL = new URL(url + "/api/search");
-  apiURL.searchParams.set("q", searchParams.q);
-  const data: datatype[] = await getData(apiURL.href);
+  const getdata = await getData(searchParams.q);
+  const data: datatype[] = JSON.parse(JSON.stringify(getdata));
   return (
     <>
       <Feed data={data} />
